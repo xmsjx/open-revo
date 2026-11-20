@@ -66,6 +66,7 @@ export component BrightnessCard inherits Rectangle {
             spacing: 8px;
 
             VerticalLayout {
+                vertical-stretch: 1;   // 填满行高，让图标中心与滑块中心对齐（不改图标尺寸）
                 alignment: center;
                 Image {
                     source: @image-url("../../assets/icons/sun.svg");
@@ -75,7 +76,12 @@ export component BrightnessCard inherits Rectangle {
                 }
             }
 
-            // Slider Area
+            // Slider Area：外面套一层等高居中容器，与两侧太阳图标同一中心线，
+            // 滑块自身仍是 22px 高，轨道/滑块几何完全不变
+            VerticalLayout {
+                vertical-stretch: 1;
+                alignment: center;
+
             Rectangle {
                 horizontal-stretch: 1;
                 height: 22px;
@@ -125,8 +131,10 @@ export component BrightnessCard inherits Rectangle {
                     }
                 }
             }
+            }
 
             VerticalLayout {
+                vertical-stretch: 1;   // 填满行高，让图标中心与滑块中心对齐（不改图标尺寸）
                 alignment: center;
                 Image {
                     source: @image-url("../../assets/icons/sun.svg");
